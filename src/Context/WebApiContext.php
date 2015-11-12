@@ -208,7 +208,7 @@ class WebApiContext implements ApiClientAwareContext
      */
     public function theResponseShouldContain($text)
     {
-        $expectedRegexp = '/' . preg_quote($text) . '/i';
+        $expectedRegexp = '/' . preg_quote($text, '/') . '/i';
         $actual = (string) $this->response->getBody();
         Assertions::assertRegExp($expectedRegexp, $actual);
     }
@@ -222,7 +222,7 @@ class WebApiContext implements ApiClientAwareContext
      */
     public function theResponseShouldNotContain($text)
     {
-        $expectedRegexp = '/' . preg_quote($text) . '/';
+        $expectedRegexp = '/' . preg_quote($text, '/') . '/';
         $actual = (string) $this->response->getBody();
         Assertions::assertNotRegExp($expectedRegexp, $actual);
     }
